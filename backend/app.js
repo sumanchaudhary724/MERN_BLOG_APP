@@ -15,6 +15,11 @@ app.use(bodyParser.urlencoded({ limit: "5mb", extended: true }));
 app.use(cookieParser);
 app.use(cors());
 
+//Routes middleware
+app.get("/", (req, res) => {
+  res.send("Hello from node js");
+});
+
 //Error middleware
 app.use(errorHandler);
 
