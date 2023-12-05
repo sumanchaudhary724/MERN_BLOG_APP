@@ -8,6 +8,9 @@ var cors = require("cors");
 const cookieParser = require("cookie-parser");
 const errorHandler = require("./middleware/error");
 
+//import routes
+const authRoutes = require("./routes/authRoutes");
+
 //Middleware
 app.use(morgan("dev"));
 app.use(bodyParser.json({ limit: "5mb" }));
@@ -16,9 +19,10 @@ app.use(cookieParser);
 app.use(cors());
 
 //Routes middleware
-app.get("/", (req, res) => {
-  res.send("Hello from node js");
-});
+// app.get("/", (req, res) => {
+//   res.send("Hello from node js");
+// });
+app.use("/", authRoutes);
 
 //Error middleware
 app.use(errorHandler);
