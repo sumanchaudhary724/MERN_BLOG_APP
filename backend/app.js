@@ -30,9 +30,13 @@ app.use(errorHandler);
 // Database connection
 mongoose
   .connect(process.env.DATABASE)
-  .then(() => console.log("DB connection"))
-  .catch((err) => console.log(err));
-
+  .then(() => {
+    console.log("DB connection successful");
+  })
+  .catch((err) => {
+    console.error("DB connection failed:", err.message);
+    process.exit(1); // Exit the process in case of a database connection failure
+  });
 // PORT
 const port = process.env.PORT || 8000;
 
